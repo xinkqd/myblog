@@ -82,8 +82,7 @@
 <ul>
 <li>通过迭代依次打开字幕稿文本文档并读取文件内的内容</li>
 </ul>
-<p><code>python
-  # 迭代读取字幕稿文本文档中的内容
+<p><code># 迭代读取字幕稿文本文档中的内容
   for n in range(rangew):
     f=open(fname,encoding='utf-8')
     ftxt = f.read()
@@ -96,8 +95,7 @@
 <li>将获取的内容保存到新的<code>Markdown</code>文档中</li>
 </ul>
 <p>经过测试，Python可以直接打开并保存<code>Markdown</code>的文件：</p>
-<p><code>python
-  # 写入Markdown文档
+<p><code># 写入Markdown文档
   fmd = open('subtitle.md','w')
   for t in range(len(text)):
     fmd.write(text[t])
@@ -147,30 +145,30 @@
 <p>这里选择通过使用<code>Python</code>的<code>replace()</code>方法将文本中的换行符<code>\n</code>替换掉，换成空格。</p>
 <p><code>replace()</code>方法需要输入2个参数，第一个参数即旧字符串（需要被替换掉的字符串），第二个参数即新字符串（需要的字符串）。</p>
 <p>修改后的代码：</p>
-<pre class="code literal-block"><span></span><span class="c1"># 1 迭代读取字幕稿文本文档中的内容</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rangew</span><span class="p">):</span>
-    <span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span>
-    <span class="n">ftxt</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<pre class="code literal-block"><span></span><span class="err">#</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">迭代读取字幕稿文本文档中的内容</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">range</span><span class="p">(</span><span class="n">rangew</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">f</span><span class="o">=</span><span class="k">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">ftxt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="k">read</span><span class="p">()</span><span class="w"></span>
 
-    <span class="c1"># 替换换行符为空格</span>
-    <span class="n">chtxt</span> <span class="o">=</span> <span class="n">ftxt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">)</span>
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">替换换行符为空格</span><span class="w"></span>
+<span class="w">    </span><span class="n">chtxt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ftxt</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="s1">'\n'</span><span class="p">,</span><span class="w"> </span><span class="s1">' '</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c1"># 为Markdown文档插入标题</span>
-    <span class="n">addfilename</span> <span class="o">=</span> <span class="s1">'#Subtitle-'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span> <span class="o">+</span> <span class="n">chtxt</span> 
-    <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">addfilename</span><span class="p">)</span>
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">为Markdown文档插入标题</span><span class="w"></span>
+<span class="w">    </span><span class="n">addfilename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'#Subtitle-'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">str</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'\n'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">chtxt</span><span class="w"> </span>
+<span class="w">    </span><span class="nc">text</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">addfilename</span><span class="p">)</span><span class="w"></span>
 
-<span class="c1"># 2 写入Markdown文档</span>
-<span class="n">fmd</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'transcript.md'</span><span class="p">,</span><span class="s1">'w+'</span><span class="p">)</span>
+<span class="err">#</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">写入Markdown文档</span><span class="w"></span>
+<span class="n">fmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">open</span><span class="p">(</span><span class="s1">'transcript.md'</span><span class="p">,</span><span class="s1">'w+'</span><span class="p">)</span><span class="w"></span>
 
-<span class="c1"># 写入目录</span>
-<span class="n">fmd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'[toc]</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="err">#</span><span class="w"> </span><span class="n">写入目录</span><span class="w"></span>
+<span class="n">fmd</span><span class="p">.</span><span class="k">write</span><span class="p">(</span><span class="s1">'[toc]\n'</span><span class="p">)</span><span class="w"></span>
 
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)):</span>
-    <span class="n">fmd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+<span class="k">for</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="nc">text</span><span class="p">))</span><span class="err">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">fmd</span><span class="p">.</span><span class="k">write</span><span class="p">(</span><span class="nc">text</span><span class="o">[</span><span class="n">t</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c1"># 当前文档内容写入完成后加入换行符隔开两段内容</span>
-    <span class="n">fmd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-<span class="n">fmd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">当前文档内容写入完成后加入换行符隔开两段内容</span><span class="w"></span>
+<span class="w">    </span><span class="n">fmd</span><span class="p">.</span><span class="k">write</span><span class="p">(</span><span class="s1">'\n'</span><span class="p">)</span><span class="w"></span>
+<span class="n">fmd</span><span class="p">.</span><span class="k">close</span><span class="p">()</span><span class="w"></span>
 </pre>
 
 
