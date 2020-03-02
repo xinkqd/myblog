@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="一种使用Python及其相关库编写的，用于将Excel指定表格数据转换成MdxBuilder可以识别的txt文本的代码。">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excel表格数据转txt文本文档数据 | 攻城狮小站</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://qianbi_tou.gitee.io/my_blog/posts/exceltotxt/">
+<!--[if lt IE 9]>
+            <script src="../../assets/js/html5shiv.min.js"></script>
+            <script src="../../assets/js/respond.min.js"></script>
+        <![endif]--><meta name="description" itemprop="description" content="一种使用Python及其相关库编写的，用于将Excel指定表格数据转换成MdxBuilder可以识别的txt文本的代码。">
+<meta name="author" content="MrX">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">跳到主内容</a>
+
+<!-- Menubar -->
+
+<nav class="navbar  header-panel shadow-z-3" role="navigation"><div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-3">
+            <h1 class="title-blog">
+                <a href="https://qianbi_tou.gitee.io/my_blog/">
+                        <span id="blog-title">攻城狮小站</span>
+                    </a>
+            </h1>
+          </div>
+          <div class="col-xs-9">
+            <a id="hamburger" class="btn btn-raised" href="javascript:void(0);" onclick="menuToggle();">☰</a>
+          </div>
+        </div>
+      </div>
+<!-- /.container-fluid -->
+</nav><div class="container-fluid main" id="content" role="main">
+        <div class="row">
+            <nav class="col-xs-12 col-sm-3 menu"><ul>
+<li class="withripple"><a href="../../index.html">主页</a></li>
+                <li class="withripple"><a href="../../archive.html">文章归档</a></li>
+                <li class="withripple"><a href="../../categories/">标签</a></li>
+                <li class="withripple"><a href="../../rss.xml">RSS 源</a></li>
+
+                    
+                </ul>
+<ul></ul></nav><div class="posts-material col-xs-12 col-sm-9">
+                <div class="col-xs-12 col-md-11 content-material">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Excel表格数据转txt文本文档数据</a></h1>
+<hr>
+<div class="metadata">
+            <span class="byline author vcard">
+                <a href=".">
+                        <i class="mdi-action-face-unlock"></i>
+                    MrX
+                </a>
+            </span>
+            <span class="dateline">
+                <a href="." rel="bookmark"><i class="mdi-device-access-time"></i>
+                    <time class="published dt-published" datetime="2020-02-24T19:59:00+08:00" itemprop="datePublished" title="2020-02-24">2020-02-24</time></a>
+            </span>
+                <meta name="description" itemprop="description" content="一种使用Python及其相关库编写的，用于将Excel指定表格数据转换成MdxBuilder可以识别的txt文本的代码。">
+</div>
+        
+        <hr></header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<h2 data-tool="mdnice编辑器" style="margin-top: 40px; margin-bottom: 20px; font-weight: bold; color: black; border-bottom: 2px solid rgb(248,57,41); font-size: 1.3em;"><span style="display: inline-block; font-weight: normal; background: rgb(248,57,41); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">一、背景</span></h2>
+
+<p>  由于自己工作的关系，工作过程中会填写很多表格，在办公室使用电脑查看或者打印出来查看还好，一但在没有电脑的场合——车间、出差路上、外协厂等场所，只能使用手机查看Excel数据，这时的体验还是比较痛苦的，虽然手机可以横屏查看，但是相比于表格内容横屏的体验也算不上太好。</p>
+<!-- TEASER_END -->
+
+<p>  前段时间在少数派上拜读了<code>hAppydOg</code>所写的《利用欧路词典查询产品信息》<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>一文，感觉很有启发。引用文章中的一句话：</p>
+<blockquote data-tool="mdnice编辑器" style="display: block; font-size: 0.9em; overflow: auto; overflow-scrolling: touch; padding-top: 10px; padding-bottom: 10px; padding-left: 20px; padding-right: 10px; margin-bottom: 20px; margin-top: 20px; font-style: normal; border-left: none; padding: 10px; position: relative; line-height: 1.8; border-radius: 0px 0px 10px 10px; color: #FEEEED; background: #000; box-shadow: #84A1A8 0px 10px 15px;">
+<span style="display: inline; color: #FFF; font-size: 4em; font-family: Arial,serif; line-height: 1em; font-weight: 700;"> </span>
+<p style="padding-top: 8px; padding-bottom: 8px; letter-spacing: 0.2em; word-spacing: 0.1em; margin: 0px; line-height: 26px; color: #FEEEED; font-size: 13px; display: inline;">表格中的产品信息本质上来说都是一组组词典，一个代码对应一条详细内容。既然是词典，用词典类 App 是最好的解决方案。</p>
+<span style="float: right; display: inline; color: #FFF; font-size: 3em; line-height: 1em; font-weight: 500;">”</span>
+</blockquote>
+
+<p>  文章中提到的两个工具，<code>ExcelToTxt</code>和<code>MdxBuilder</code>。其中<code>ExcelToTxt</code>是一个将Excel表格中的数据转换成符合<code>Mdx</code>字典格式转换标准的txt文档的工具，而<code>MdxBuilder</code>则是将获取的txt文档转换为<code>Mdx</code>字典格式的工具。</p>
+<p>  最近在学习Python，Python 是一种易于学习又功能强大的编程语言。它提供了高效的高级数据结构，还能简单有效地面向对象编程<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>。</p>
+<p>  苦于目前没有合适的机会测试下自己的学习成果，于是想着自己用Python写一段代码，用来实现和<code>ExcelToTxt</code>实现相同的功能。</p>
+<h2 data-tool="mdnice编辑器" style="margin-top: 40px; margin-bottom: 20px; font-weight: bold; color: black; border-bottom: 2px solid rgb(248,57,41); font-size: 1.3em;"><span style="display: inline-block; font-weight: normal; background: rgb(248,57,41); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">二、准备</span></h2>
+
+<p>  工欲善其事必先利其器。</p>
+<p>  要读写Excel文档，光有Python环境还不行，还需要有合适的库来支撑文件的读写。在Python众多第三方读写Excel文档库中，我最终选择了<code>OpenPyxl</code>这个第三方库。<code>OpenPyXL</code>是一个用于读写Excel2010及以上版本的<code>xlsx/xlsm/xltx</code>及<code>xltm</code>文件的第三方Python库<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>。通过<code>OpenPyXL</code>库可以完成Excel的大多数操作。</p>
+<h2 data-tool="mdnice编辑器" style="margin-top: 40px; margin-bottom: 20px; font-weight: bold; color: black; border-bottom: 2px solid rgb(248,57,41); font-size: 1.3em;"><span style="display: inline-block; font-weight: normal; background: rgb(248,57,41); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">三、思路</span></h2>
+
+<p>  因为最终我只需要每个单元格中的值即可，在<code>OpenPyxl</code>中，我们可以通过<code>cell.value</code>属性，通过迭代单元格获取每个单元格的值：</p>
+<pre class="code literal-block"><span></span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+        <span class="n">cellvalue</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">value</span>
+</pre>
+
+
+<p>  通过这样的方法，可以分别获取Excel表格中的标题部分和正文部分的内容，然后再通过迭代将他们一一关联起来。</p>
+<p>  获取了标题和正文对应的数据，还需要将他们保存起来以便后续调用：基于<code>List</code>是有序的，可更改的且允许重复成员，我选择使用<code>List</code>来存储最终获得的数据。</p>
+<p>  最终将所需的数据依次写入txt文档。</p>
+<h2 data-tool="mdnice编辑器" style="margin-top: 40px; margin-bottom: 20px; font-weight: bold; color: black; border-bottom: 2px solid rgb(248,57,41); font-size: 1.3em;"><span style="display: inline-block; font-weight: normal; background: rgb(248,57,41); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">四、实现步骤</span></h2>
+
+<ol>
+<li>
+<p>读取Excel表格数据</p>
+</li>
+<li>
+<p>读取标题</p>
+<p>在实现这部分功能时，考虑到后续会使用到标题行故将标题行单元格的值放到了<code>TotalTitleName</code>这个<code>List</code>中：</p>
+</li>
+</ol>
+<pre class="code literal-block"><span></span>     <span class="n">TotalTitleName</span> <span class="o">=</span> <span class="p">[]</span>
+     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ws</span><span class="p">[</span><span class="s1">'A1'</span><span class="p">:</span><span class="s1">'I1'</span><span class="p">]:</span>
+         <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+             <span class="n">TotalTitleName</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre>
+
+
+<ul>
+<li>
+<p>遍历表格数据</p>
+<p>  要获取表格数据，和前文获取标题行数据类似，也是遍历所有单元格，只是这次遍历的是标题行外的行。</p>
+<p>  遍历过程中首先将各行数据写入<code>List_CellValue</code>中，遍历完一行再将其值写入<code>List_AllCell_Value</code>中，其中<code>List_AllCell_Value</code>是一个包含所有行数据的二维<code>List</code>：</p>
+</li>
+</ul>
+<pre class="code literal-block"><span></span>     <span class="c1"># 遍历单元格</span>
+     <span class="n">List_AllCell_Value</span> <span class="o">=</span> <span class="p">[]</span>
+     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ws</span><span class="p">[</span><span class="s1">'A2'</span><span class="p">:</span><span class="s1">'I9'</span><span class="p">]:</span>
+         <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span> 
+             <span class="n">List_CellValue</span> <span class="o">=</span> <span class="p">[]</span>
+             <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+                 <span class="n">List_CellValue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+             <span class="n">List_AllCell_Value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">List_CellValue</span><span class="p">)</span> 
+</pre>
+
+
+<ul>
+<li>
+<p>将标题与每行对应数据关联</p>
+<p>将获取到的标题和单元格内容进行关联，并将关联后的文件写入新的<code>List</code>中：</p>
+</li>
+</ul>
+<pre class="code literal-block"><span></span>     <span class="n">Info_Row_Value</span> <span class="o">=</span> <span class="p">[]</span>
+     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">):</span>
+         <span class="n">Info_All_Row_Value</span> <span class="o">=</span> <span class="p">[]</span> 
+         <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">9</span><span class="p">):</span>    
+             <span class="n">NewCatlog</span> <span class="o">=</span> <span class="n">Titlename</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">+</span><span class="s1">'：'</span><span class="o">+</span> <span class="n">Textvalue</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span>
+             <span class="n">Info_All_Row_Value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NewCatlog</span><span class="p">)</span>
+             <span class="n">Info_All_Row_Value</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span><span class="n">Info_All_Row_Value</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'&lt;p&gt;'</span> 
+         <span class="n">Info_Row_Value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Info_All_Row_Value</span><span class="p">)</span>
+</pre>
+
+
+<p>  如此便完成了写入txt文件中读取Excel表格部分的工作，接下来就是要将获得的<code>List</code>中的数据写入txt文档即可。</p>
+<ul>
+<li>写入txt文件
+     这里采用直接将数据写入txt文件的方式：</li>
+</ul>
+<pre class="code literal-block"><span></span>   <span class="c1"># 写入数据</span>
+   <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+       <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">):</span> 
+           <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">9</span><span class="p">):</span> 
+            <span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">InputListInfo</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">])</span> 
+   <span class="c1"># 关闭txt文档</span>
+   <span class="n">f</span><span class="o">.</span><span class="n">close</span>
+</pre>
+
+
+<hr>
+<p>  因为写代码的依据是统计自己发表的各类知识产权的统计表：</p>
+<p></p>
+<center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/20200224/xlsx2txt1.png" width="80%"></center>
+
+<p><br></p>
+<p>  因此也就拿这个表格做了测试。程序运行后生成的txt文档：</p>
+<p></p>
+<center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/20200224/xlsx2txt2.png" width="80%"></center>
+
+<p><br></p>
+<p>  通过<code>MdxBuilder</code>生成的词典数据：</p>
+<p></p>
+<center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/20200224/xlsx2txt3.png" width="40%"></center>
+
+<p><br></p>
+<p>  最终经过对代码进行调整和优化，生成的<code>Mdx</code>字典词条如上图，已经能达到使用<code>ExcelToTxt</code>转换文件生成词典数据类似的效果。</p>
+<p></p>
+<center>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a><br>本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</center>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>《利用欧路词典查询产品信息》：https://sspai.com/post/39503 <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:2">
+<p>Python 教程：
+https://docs.python.org/zh-cn/3/tutorial/index.html <a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn:3">
+<p>OpenPyxl：https://openpyxl.readthedocs.io <a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><div itemprop="keywords" class="tags">
+            <a class="tag p-category btn btn-success btn-raised btn-sm" href="../../categories/excel/" rel="tag">excel</a>
+            <a class="tag p-category btn btn-success btn-raised btn-sm" href="../../categories/python/" rel="tag">python</a>
+        </div>
+
+    
+    </nav></aside></article>
+</div>
+            </div>
+        </div>
+        <button class="btn btn-fab btn-raised btn-material-green btn-footer" data-toggle="modal" data-target="#footer-dialog">
+            <i class="mdi-communication-message"></i>
+        </button>
+        <div id="footer-dialog" class="modal fade" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">攻城狮小站 credits</h4>
+              </div>
+              <div class="modal-body">
+                    Contents © 2020         <a href="mailto:xinkqd#foxmail.com">MrX</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         本站作品采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可。
+                    
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">Ok</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source-button">
+    <a class="btn btn-fab btn-raised btn-material-indigo" target="_blank" href="index.md" title="源文件">
+        <i class="mdi-file-cloud-download"></i>
+    </a>
+
+        </div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>
+
+            $(document).ready(function() {
+                // This command is used to initialize some elements and make them work properly
+                $.material.init();
+            });
+
+            $(window).on("resize", function() {
+                if($(window).width() > 767) {
+                  $("html, body").height($(window).height());
+                  $(".main, .menu").height($(window).height() - $(".header-panel").outerHeight() - 76 );
+                  $(".posts-material").height($(window).height());
+                } else {
+                  $("html, body").css('height', '');
+                  $(".main, .menu").css('height', '');
+                  $(".posts-material").css('height', '');
+                }
+            }).trigger("resize");
+
+            function menuToggle() {
+                $("nav.menu, ul").toggleClass('responsive', '');
+            }
+        </script><!-- fancy dates --><script>
+    moment.locale("zh-cn");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><div align="center">
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+
+<span id="busuanzi_container_page_pv">
+    文章点击次数:<span id="busuanzi_value_page_pv"></span>
+</span>
+  
+<span id="busuanzi_container_site_uv">
+    本站浏览量:<span id="busuanzi_value_site_uv"></span>
+</span><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><script>
+    $(document).ready(
+        // 设置初始值
+        setInitialCount(0);
+    );
+    function setInitialCount(num) {
+        var busuanziSiteOffset = parseInt(num);
+ 
+        if ($("#busuanzi_container_site_pv").css("display") != "none") {
+            // 同理id也可以是busuanzi_container_page_pv
+            // busuanzi_container_site_uv
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+        }
+
+    
+    }
+</script>
+</div>
+</body>
+</html>
