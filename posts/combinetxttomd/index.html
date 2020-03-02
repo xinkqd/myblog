@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="使用Python读取若干文本文档中的数据，并将数据汇总写入一个Markdown文档中。">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python批量合并文本文件 | 攻城狮小站</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://qianbi_tou.gitee.io/my_blog/posts/combinetxttomd/">
+<!--[if lt IE 9]>
+            <script src="../../assets/js/html5shiv.min.js"></script>
+            <script src="../../assets/js/respond.min.js"></script>
+        <![endif]--><meta name="description" itemprop="description" content="使用Python读取若干文本文档中的数据，并将数据汇总写入一个Markdown文档中。">
+<meta name="author" content="MrX">
+<link rel="prev" href="../exceltotxt/" title="Excel表格数据转txt文本文档数据" type="text/html">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">跳到主内容</a>
+
+<!-- Menubar -->
+
+<nav class="navbar  header-panel shadow-z-3" role="navigation"><div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-3">
+            <h1 class="title-blog">
+                <a href="https://qianbi_tou.gitee.io/my_blog/">
+                        <span id="blog-title">攻城狮小站</span>
+                    </a>
+            </h1>
+          </div>
+          <div class="col-xs-9">
+            <a id="hamburger" class="btn btn-raised" href="javascript:void(0);" onclick="menuToggle();">☰</a>
+          </div>
+        </div>
+      </div>
+<!-- /.container-fluid -->
+</nav><div class="container-fluid main" id="content" role="main">
+        <div class="row">
+            <nav class="col-xs-12 col-sm-3 menu"><ul>
+<li class="withripple"><a href="../../index.html">主页</a></li>
+                <li class="withripple"><a href="../../archive.html">文章归档</a></li>
+                <li class="withripple"><a href="../../categories/">标签</a></li>
+                <li class="withripple"><a href="../../rss.xml">RSS 源</a></li>
+
+                    
+                </ul>
+<ul></ul></nav><div class="posts-material col-xs-12 col-sm-9">
+                <div class="col-xs-12 col-md-11 content-material">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Python批量合并文本文件</a></h1>
+<hr>
+<div class="metadata">
+            <span class="byline author vcard">
+                <a href=".">
+                        <i class="mdi-action-face-unlock"></i>
+                    MrX
+                </a>
+            </span>
+            <span class="dateline">
+                <a href="." rel="bookmark"><i class="mdi-device-access-time"></i>
+                    <time class="published dt-published" datetime="2020-03-02T16:30:00+08:00" itemprop="datePublished" title="2020-03-02">2020-03-02</time></a>
+            </span>
+                <meta name="description" itemprop="description" content="使用Python读取若干文本文档中的数据，并将数据汇总写入一个Markdown文档中。">
+</div>
+        
+        <hr></header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>这几天在Coursela（一个著名的MOOC平台）上报名参加了一门课程：Machine Design。</p>
+<p>Machine Design是一门专业性很强的课程，主要讲述了诸如静力破坏及疲劳破坏的理论知识、常见机械结构的分析，机械系统设计等内容。</p>
+<!-- TEASER_END -->
+
+<p>看了一下课程整体的信息及课程安排，课程全英文授课，无任何中文资源。而且里面用到了非常多的机械类专业名词，这些词虽然在以前的工作和学习生活中有所了解，但是仅仅是中文层面，英文层面还是一片空白的状态。为了保证后面学习的流畅性，我将课程视频的字幕稿下载了下来并为自己做了一个计划：在开始每周的学习前先将预习字幕稿，了解接下来一周课程的主要内容，尤其是用到的机械相关专有名。</p>
+<p>最终下载完成的第一周的字幕稿有11份之多。既然学习了<code>Python</code>，那就用<code>Python</code>编写一段程序，用来批量读取txt文件中的字幕稿并将其汇总后统一保存到一个<code>Markdown</code>文档中。这样便可以免去打开11次重复的打开txt文件并粘贴复制到<code>Markdown</code>文档的繁琐，可以提高转换效率。</p>
+<h2 data-tool="mdnice编辑器" style="margin-top: 40px; margin-bottom: 20px; font-weight: bold; color: black; border-bottom: 2px solid rgb(248,57,41); font-size: 1.3em;"><span style="display: inline-block; font-weight: normal; background: rgb(248,57,41); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">一、所需材料</span></h2>
+
+<ul>
+<li>字幕稿文本文件若干</li>
+<li>Python开发环境</li>
+</ul>
+<h2 data-tool="mdnice编辑器" style="margin-top: 40px; margin-bottom: 20px; font-weight: bold; color: black; border-bottom: 2px solid rgb(248,57,41); font-size: 1.3em;"><span style="display: inline-block; font-weight: normal; background: rgb(248,57,41); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">二、步骤</span></h2>
+
+<ul>
+<li>通过迭代依次打开字幕稿文本文档并读取文件内的内容</li>
+</ul>
+<p><code>python
+  # 迭代读取字幕稿文本文档中的内容
+  for n in range(rangew):
+    f=open(fname,encoding='utf-8')
+    ftxt = f.read()
+    text.append(ftxt)</code></p>
+<p>其中：</p>
+<p>变量<code>fname</code>存放文件的文件名。</p>
+<p>txt文档中的内容通过Python提供的<code>file.read()</code>方法获取，并将获取到的文本内容赋值给<code>ftxt</code>。</p>
+<p>变量<code>text</code>为一个<code>List</code>，用于存储每个字幕稿文件中的内容。通过<code>List.append()</code>方法将<code>ftxt</code>的内容增加到<code>text</code>这个<code>List</code>中。</p>
+<ul>
+<li>将获取的内容保存到新的<code>Markdown</code>文档中</li>
+</ul>
+<p>经过测试，Python可以直接打开并保存<code>Markdown</code>的文件：</p>
+<p><code>python
+  # 写入Markdown文档
+  fmd = open('subtitle.md','w')
+  for t in range(len(text)):
+    fmd.write(text[t])
+  fmd.close()</code></p>
+<p>这里首先应用到了Python的<code>open()</code>函数：<code>open()</code>函数可以用于打开一个文件，创建一个<code>file</code>对象。</p>
+<p><code>open()</code>函数有两个参数：一个是<code>文件名name</code>，即上面的<code>transcript.md</code>，另一个是模式<code>mode</code>，用于确定文件的打开方式，即上面的<code>w</code>。通过<code>open()</code>函数，程序创建并打开了一个名为<code>subtitle.md</code>的文档。</p>
+<p>之后通过遍历，将上面获取到的内容依次写入<code>Markdown</code>文档。</p>
+<ul>
+<li>写入效果</li>
+</ul>
+<p></p>
+<p></p>
+<center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/20200302/20030201.png" width="40%"></center>
+<p></p>
+<center><font size="2">图1 运行代码生成文档顶部</font></center>
+<p></p>
+<p></p>
+<center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/20200302/20030202.png" width="40%"></center>
+<p></p>
+<center><font size="2">图2 运行代码生成文档（两字幕稿之间）</font></center>
+<p>总结一下，程序的功能算是完成了，但是汇总后的稿件看着好不舒服：</p>
+<p></p>
+<p></p>
+<center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/expression/unhappy.jpg" width="20%"></center>
+<ol>
+<li>生成的文件没有目录不方便快速定位不同字幕稿；</li>
+<li>不同字幕稿之间没有明显的分界，不方便阅读和查找；</li>
+<li>句子断句跟随视频，中间很多被换行符断开，阅读不便。</li>
+</ol>
+<h2 data-tool="mdnice编辑器" style="margin-top: 40px; margin-bottom: 20px; font-weight: bold; color: black; border-bottom: 2px solid rgb(248,57,41); font-size: 1.3em;"><span style="display: inline-block; font-weight: normal; background: rgb(248,57,41); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">三、修改</span></h2>
+
+<p>分析一下，其实解决起来还是很简单的：</p>
+<ul>
+<li>
+<code>Markdown</code>文档中加入目录</li>
+</ul>
+<p><code>Markdown</code>中，要加入目录，只需要在文档正文前加入<code>[toc]</code>即可。</p>
+<p>这里通过向文档中写入字幕稿前先写入<code>[toc]</code>的方式解决。</p>
+<ul>
+<li>为文本增加标题</li>
+</ul>
+<p>为了增加辨识度且便于在文档中阅读，需要为每段字幕稿在开始的位置加入标题。</p>
+<p>这里通过为获取到的文本前和后增加对应字符串的方式解决。</p>
+<ul>
+<li>查找并替换文档中的换行符<code>\n</code>。</li>
+</ul>
+<p>这里选择通过使用<code>Python</code>的<code>replace()</code>方法将文本中的换行符<code>\n</code>替换掉，换成空格。</p>
+<p><code>replace()</code>方法需要输入2个参数，第一个参数即旧字符串（需要被替换掉的字符串），第二个参数即新字符串（需要的字符串）。</p>
+<p>修改后的代码：</p>
+<pre class="code literal-block"><span></span><span class="c1"># 1 迭代读取字幕稿文本文档中的内容</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rangew</span><span class="p">):</span>
+    <span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span>
+    <span class="n">ftxt</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># 替换换行符为空格</span>
+    <span class="n">chtxt</span> <span class="o">=</span> <span class="n">ftxt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">)</span>
+
+    <span class="c1"># 为Markdown文档插入标题</span>
+    <span class="n">addfilename</span> <span class="o">=</span> <span class="s1">'#Subtitle-'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span> <span class="o">+</span> <span class="n">chtxt</span> 
+    <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">addfilename</span><span class="p">)</span>
+
+<span class="c1"># 2 写入Markdown文档</span>
+<span class="n">fmd</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'transcript.md'</span><span class="p">,</span><span class="s1">'w+'</span><span class="p">)</span>
+
+<span class="c1"># 写入目录</span>
+<span class="n">fmd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'[toc]</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)):</span>
+    <span class="n">fmd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+
+    <span class="c1"># 当前文档内容写入完成后加入换行符隔开两段内容</span>
+    <span class="n">fmd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">fmd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre>
+
+
+<p>代码修改后的运行效果：</p>
+<p></p>
+<center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/20200302/20030205.png" width="40%"></center>
+
+<p></p>
+<center><font size="2">图3 修改代码后生成文档</font></center>
+<p></p>
+<center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/20200302/20030204.png" width="40%"></center>
+
+<p></p>
+<center><font size="2">图4 修改代码后生成文档（两字幕稿之间）</font></center>
+<h2 data-tool="mdnice编辑器" style="margin-top: 40px; margin-bottom: 20px; font-weight: bold; color: black; border-bottom: 2px solid rgb(248,57,41); font-size: 1.3em;"><span style="display: inline-block; font-weight: normal; background: rgb(248,57,41); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">四、总结</span></h2>
+
+<p>对比代码修改前后生成的<code>Markdown</code>文档，代码修改后的文档颜值增加明显，十分便于阅读。</p>
+<p>以后工作中再遇到需要进行文字稿的批量汇总，调整一下代码就可以嗖的一下完成，可以为自己节省出更多的时间给思考问题。</p>
+<p></p>
+<center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/expression/happy.gif" width="20%"></center>
+
+<hr>
+<p></p>
+<center>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a><br>本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</center>
+<p></p>
+<center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/20200229/qrcode.jpg" width="20%"></center>
+
+<p></p>
+<center>如果你有什么想要和我交流的内容，欢迎关注我的微信公众号并留言︿(￣︶￣)︿</center>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><div itemprop="keywords" class="tags">
+            <a class="tag p-category btn btn-success btn-raised btn-sm" href="../../categories/python/" rel="tag">python</a>
+        </div>
+
+            <ul class="pager">
+<li class="previous">
+                <a href="../exceltotxt/" rel="prev" title="Excel表格数据转txt文本文档数据">上一篇文章</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+            </div>
+        </div>
+        <button class="btn btn-fab btn-raised btn-material-green btn-footer" data-toggle="modal" data-target="#footer-dialog">
+            <i class="mdi-communication-message"></i>
+        </button>
+        <div id="footer-dialog" class="modal fade" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">攻城狮小站 credits</h4>
+              </div>
+              <div class="modal-body">
+                    Contents © 2020         <a href="mailto:xinkqd#foxmail.com">MrX</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         本站作品采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可。
+                    
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">Ok</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source-button">
+    <a class="btn btn-fab btn-raised btn-material-indigo" target="_blank" href="index.md" title="源文件">
+        <i class="mdi-file-cloud-download"></i>
+    </a>
+
+        </div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>
+
+            $(document).ready(function() {
+                // This command is used to initialize some elements and make them work properly
+                $.material.init();
+            });
+
+            $(window).on("resize", function() {
+                if($(window).width() > 767) {
+                  $("html, body").height($(window).height());
+                  $(".main, .menu").height($(window).height() - $(".header-panel").outerHeight() - 76 );
+                  $(".posts-material").height($(window).height());
+                } else {
+                  $("html, body").css('height', '');
+                  $(".main, .menu").css('height', '');
+                  $(".posts-material").css('height', '');
+                }
+            }).trigger("resize");
+
+            function menuToggle() {
+                $("nav.menu, ul").toggleClass('responsive', '');
+            }
+        </script><!-- fancy dates --><script>
+    moment.locale("zh-cn");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><div align="center">
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+
+<span id="busuanzi_container_page_pv">
+    文章点击次数:<span id="busuanzi_value_page_pv"></span>
+</span>
+  
+<span id="busuanzi_container_site_uv">
+    本站浏览量:<span id="busuanzi_value_site_uv"></span>
+</span><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><script>
+    $(document).ready(
+        // 设置初始值
+        setInitialCount(0);
+    );
+    function setInitialCount(num) {
+        var busuanziSiteOffset = parseInt(num);
+ 
+        if ($("#busuanzi_container_site_pv").css("display") != "none") {
+            // 同理id也可以是busuanzi_container_page_pv
+            // busuanzi_container_site_uv
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+        }
+
+    
+    }
+</script>
+</div>
+</body>
+</html>
