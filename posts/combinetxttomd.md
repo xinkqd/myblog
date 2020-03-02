@@ -29,7 +29,7 @@ Machine Design是一门专业性很强的课程，主要讲述了诸如静力破
 
   
 
-  ```python
+  ```
   # 迭代读取字幕稿文本文档中的内容
   for n in range(rangew):
   	f=open(fname,encoding='utf-8')
@@ -53,7 +53,7 @@ Machine Design是一门专业性很强的课程，主要讲述了诸如静力破
 
   
 
-  ```python
+  ```
   # 写入Markdown文档
   fmd = open('subtitle.md','w')
   for t in range(len(text)):
@@ -113,7 +113,7 @@ Machine Design是一门专业性很强的课程，主要讲述了诸如静力破
 
 
 
-```python
+```
 # 1 迭代读取字幕稿文本文档中的内容
 for n in range(rangew):
 	f=open(fname,encoding='utf-8')
