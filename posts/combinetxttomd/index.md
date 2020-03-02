@@ -27,17 +27,13 @@ Machine Design是一门专业性很强的课程，主要讲述了诸如静力破
 
 * 通过迭代依次打开字幕稿文本文档并读取文件内的内容
 
-  
-
-  ```
-  # 迭代读取字幕稿文本文档中的内容
-  for n in range(rangew):
+```python
+   # 迭代读取字幕稿文本文档中的内容
+   for n in range(rangew):
   	f=open(fname,encoding='utf-8')
   	ftxt = f.read()
   	text.append(ftxt)
-  ```
-
-  
+```
 
   其中：
 
@@ -51,17 +47,13 @@ Machine Design是一门专业性很强的课程，主要讲述了诸如静力破
 
   经过测试，Python可以直接打开并保存`Markdown`的文件：
 
-  
-
-  ```
-  # 写入Markdown文档
-  fmd = open('subtitle.md','w')
-  for t in range(len(text)):
+```python
+ # 写入Markdown文档
+   fmd = open('subtitle.md','w')
+   for t in range(len(text)):
   	fmd.write(text[t])
-  fmd.close()
-  ```
-
-  
+   fmd.close()
+```
 
   这里首先应用到了Python的`open()`函数：`open()`函数可以用于打开一个文件，创建一个`file`对象。
 
@@ -69,23 +61,23 @@ Machine Design是一门专业性很强的课程，主要讲述了诸如静力破
 
   之后通过遍历，将上面获取到的内容依次写入`Markdown`文档。
 
-* 写入效果
+写入效果：
 
-  <p><center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/20200302/20030201.png" width="40%"></center></p>
+<p><center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/20200302/20030201.png" width="40%"></center></p>
 
-  <center><font size=2>图1 运行代码生成文档顶部</font></center>
+<center><font size=2>图1 运行代码生成文档顶部</font></center>
 
-  <p><center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/20200302/20030202.png" width="40%"></center></p>
+<p><center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/20200302/20030202.png" width="40%"></center></p>
 
-  <center><font size=2>图2 运行代码生成文档（两字幕稿之间）</font></center>
-  
-  总结一下，程序的功能算是完成了，但是汇总后的稿件看着好不舒服：
-  
-  <p><center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/expression/unhappy.jpg" width="20%"></center></p>
-  
-  1. 生成的文件没有目录不方便快速定位不同字幕稿；
-  2. 不同字幕稿之间没有明显的分界，不方便阅读和查找；
-  3. 句子断句跟随视频，中间很多被换行符断开，阅读不便。
+<center><font size=2>图2 运行代码生成文档（两字幕稿之间）</font></center>
+
+总结一下，程序的功能算是完成了，但是汇总后的稿件看着好不舒服：
+
+<p><center><img src="https://gitee.com/qianbi_tou/uploadpic/raw/master/expression/unhappy.jpg" width="20%"></center></p>
+
+1. 生成的文件没有目录不方便快速定位不同字幕稿；
+2. 不同字幕稿之间没有明显的分界，不方便阅读和查找；
+3. 句子断句跟随视频，中间很多被换行符断开，阅读不便。
 
 <h1 data-tool="mdnice编辑器" style="margin-top: 40px; margin-bottom: 20px; font-weight: bold; color: black; border-bottom: 2px solid rgb(248,57,41); font-size: 1.3em;"><span style="display: inline-block; font-weight: normal; background: rgb(248,57,41); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">三、修改</span></h1>
 
@@ -111,11 +103,9 @@ Machine Design是一门专业性很强的课程，主要讲述了诸如静力破
 
 修改后的代码：
 
-
-
-```
-# 1 迭代读取字幕稿文本文档中的内容
-for n in range(rangew):
+```python
+ # 1 迭代读取字幕稿文本文档中的内容
+ for n in range(rangew):
 	f=open(fname,encoding='utf-8')
 	ftxt = f.read()
     
@@ -126,21 +116,19 @@ for n in range(rangew):
 	addfilename = '#Subtitle-' + str(n+1) + '\n' + chtxt 
 	text.append(addfilename)
     
-# 2 写入Markdown文档
-fmd = open('transcript.md','w+')
+ # 2 写入Markdown文档
+ fmd = open('transcript.md','w+')
 
-# 写入目录
-fmd.write('[toc]\n')
+ # 写入目录
+ fmd.write('[toc]\n')
 
-for t in range(len(text)):
+ for t in range(len(text)):
 	fmd.write(text[t])
     
     # 当前文档内容写入完成后加入换行符隔开两段内容
 	fmd.write('\n')
-fmd.close()
+ fmd.close()
 ```
-
-
 
 代码修改后的运行效果：
 

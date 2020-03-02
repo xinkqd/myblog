@@ -87,7 +87,7 @@
 <h2 data-tool="mdnice编辑器" style="margin-top: 40px; margin-bottom: 20px; font-weight: bold; color: black; border-bottom: 2px solid rgb(248,57,41); font-size: 1.3em;"><span style="display: inline-block; font-weight: normal; background: rgb(248,57,41); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">三、思路</span></h2>
 
 <p>  因为最终我只需要每个单元格中的值即可，在<code>OpenPyxl</code>中，我们可以通过<code>cell.value</code>属性，通过迭代单元格获取每个单元格的值：</p>
-<pre class="code literal-block"><span></span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+<pre class="code literal-block"><span></span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
         <span class="n">cellvalue</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">value</span>
 </pre>
@@ -107,10 +107,10 @@
 <p>在实现这部分功能时，考虑到后续会使用到标题行故将标题行单元格的值放到了<code>TotalTitleName</code>这个<code>List</code>中：</p>
 </li>
 </ol>
-<pre class="code literal-block"><span></span>     <span class="n">TotalTitleName</span> <span class="o">=</span> <span class="p">[]</span>
-     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ws</span><span class="p">[</span><span class="s1">'A1'</span><span class="p">:</span><span class="s1">'I1'</span><span class="p">]:</span>
-         <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
-             <span class="n">TotalTitleName</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<pre class="code literal-block"><span></span> <span class="n">TotalTitleName</span> <span class="o">=</span> <span class="p">[]</span>
+ <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ws</span><span class="p">[</span><span class="s1">'A1'</span><span class="p">:</span><span class="s1">'I1'</span><span class="p">]:</span>
+     <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+          <span class="n">TotalTitleName</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 </pre>
 
 
@@ -121,14 +121,14 @@
 <p>  遍历过程中首先将各行数据写入<code>List_CellValue</code>中，遍历完一行再将其值写入<code>List_AllCell_Value</code>中，其中<code>List_AllCell_Value</code>是一个包含所有行数据的二维<code>List</code>：</p>
 </li>
 </ul>
-<pre class="code literal-block"><span></span>     <span class="c1"># 遍历单元格</span>
-     <span class="n">List_AllCell_Value</span> <span class="o">=</span> <span class="p">[]</span>
-     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ws</span><span class="p">[</span><span class="s1">'A2'</span><span class="p">:</span><span class="s1">'I9'</span><span class="p">]:</span>
-         <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span> 
-             <span class="n">List_CellValue</span> <span class="o">=</span> <span class="p">[]</span>
-             <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
-                 <span class="n">List_CellValue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-             <span class="n">List_AllCell_Value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">List_CellValue</span><span class="p">)</span> 
+<pre class="code literal-block"><span></span> <span class="c1"># 遍历单元格</span>
+ <span class="n">List_AllCell_Value</span> <span class="o">=</span> <span class="p">[]</span>
+ <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ws</span><span class="p">[</span><span class="s1">'A2'</span><span class="p">:</span><span class="s1">'I9'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span> 
+        <span class="n">List_CellValue</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+            <span class="n">List_CellValue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">List_AllCell_Value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">List_CellValue</span><span class="p">)</span> 
 </pre>
 
 
@@ -138,14 +138,14 @@
 <p>将获取到的标题和单元格内容进行关联，并将关联后的文件写入新的<code>List</code>中：</p>
 </li>
 </ul>
-<pre class="code literal-block"><span></span>     <span class="n">Info_Row_Value</span> <span class="o">=</span> <span class="p">[]</span>
-     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">):</span>
-         <span class="n">Info_All_Row_Value</span> <span class="o">=</span> <span class="p">[]</span> 
-         <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">9</span><span class="p">):</span>    
-             <span class="n">NewCatlog</span> <span class="o">=</span> <span class="n">Titlename</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">+</span><span class="s1">'：'</span><span class="o">+</span> <span class="n">Textvalue</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span>
-             <span class="n">Info_All_Row_Value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NewCatlog</span><span class="p">)</span>
-             <span class="n">Info_All_Row_Value</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span><span class="n">Info_All_Row_Value</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'&lt;p&gt;'</span> 
-         <span class="n">Info_Row_Value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Info_All_Row_Value</span><span class="p">)</span>
+<pre class="code literal-block"><span></span> <span class="n">Info_Row_Value</span> <span class="o">=</span> <span class="p">[]</span>
+ <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">Info_All_Row_Value</span> <span class="o">=</span> <span class="p">[]</span> 
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">9</span><span class="p">):</span>    
+        <span class="n">NewCatlog</span> <span class="o">=</span> <span class="n">Titlename</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">+</span><span class="s1">'：'</span><span class="o">+</span> <span class="n">Textvalue</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span>
+        <span class="n">Info_All_Row_Value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NewCatlog</span><span class="p">)</span>
+        <span class="n">Info_All_Row_Value</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span><span class="n">Info_All_Row_Value</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'&lt;p&gt;'</span> 
+     <span class="n">Info_Row_Value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Info_All_Row_Value</span><span class="p">)</span>
 </pre>
 
 
