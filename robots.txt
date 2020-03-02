@@ -1,4 +1,4 @@
-Sitemap: https://qianbi_tou.gitee.io/my_blog/sitemapindex.xml
+Sitemap: https://xinkqd.github.io/myblog/sitemapindex.xml
 
 User-Agent: *
-Host: qianbi_tou.gitee.io
+Host: xinkqd.github.io

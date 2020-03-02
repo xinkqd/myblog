@@ -6,115 +6,115 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/</loc>
+  <loc>https://xinkqd.github.io/myblog/</loc>
   <lastmod>2020-02-24T12:39:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/2020/</loc>
+  <loc>https://xinkqd.github.io/myblog/2020/</loc>
   <lastmod>2020-02-24T12:01:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/archive.html</loc>
-  <lastmod>2020-03-02T14:36:00Z</lastmod>
+  <loc>https://xinkqd.github.io/myblog/archive.html</loc>
+  <lastmod>2020-03-02T15:20:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/categories/</loc>
+  <loc>https://xinkqd.github.io/myblog/categories/</loc>
   <lastmod>2020-02-25T13:16:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/categories/cat_python/</loc>
+  <loc>https://xinkqd.github.io/myblog/categories/cat_python/</loc>
   <lastmod>2020-02-24T12:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/categories/excel/</loc>
+  <loc>https://xinkqd.github.io/myblog/categories/excel/</loc>
   <lastmod>2020-02-25T09:20:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/categories/python/</loc>
+  <loc>https://xinkqd.github.io/myblog/categories/python/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/galleries/</loc>
+  <loc>https://xinkqd.github.io/myblog/galleries/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/galleries/demo/</loc>
+  <loc>https://xinkqd.github.io/myblog/galleries/demo/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/listings/</loc>
+  <loc>https://xinkqd.github.io/myblog/listings/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/listings/__pycache__/</loc>
+  <loc>https://xinkqd.github.io/myblog/listings/__pycache__/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/listings/hello.py.html</loc>
-  <lastmod>2020-02-27T15:57:00Z</lastmod>
+  <loc>https://xinkqd.github.io/myblog/listings/hello.py.html</loc>
+  <lastmod>2020-03-02T15:20:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/pages/about-nikola/</loc>
+  <loc>https://xinkqd.github.io/myblog/pages/about-nikola/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/pages/bootstrap-demo/</loc>
+  <loc>https://xinkqd.github.io/myblog/pages/bootstrap-demo/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/pages/charts/</loc>
+  <loc>https://xinkqd.github.io/myblog/pages/charts/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/pages/creating-a-theme/</loc>
+  <loc>https://xinkqd.github.io/myblog/pages/creating-a-theme/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/pages/dr-nikolas-vendetta/</loc>
+  <loc>https://xinkqd.github.io/myblog/pages/dr-nikolas-vendetta/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/pages/extending/</loc>
+  <loc>https://xinkqd.github.io/myblog/pages/extending/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/pages/handbook/</loc>
+  <loc>https://xinkqd.github.io/myblog/pages/handbook/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/pages/internals/</loc>
+  <loc>https://xinkqd.github.io/myblog/pages/internals/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/pages/listings-demo/</loc>
+  <loc>https://xinkqd.github.io/myblog/pages/listings-demo/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/pages/path-handlers/</loc>
+  <loc>https://xinkqd.github.io/myblog/pages/path-handlers/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/pages/quickref/</loc>
+  <loc>https://xinkqd.github.io/myblog/pages/quickref/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/pages/quickstart/</loc>
+  <loc>https://xinkqd.github.io/myblog/pages/quickstart/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/pages/social_buttons/</loc>
+  <loc>https://xinkqd.github.io/myblog/pages/social_buttons/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/pages/theming/</loc>
+  <loc>https://xinkqd.github.io/myblog/pages/theming/</loc>
   <lastmod>2020-02-24T11:42:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/posts/combinetxttomd/</loc>
+  <loc>https://xinkqd.github.io/myblog/posts/combinetxttomd/</loc>
   <lastmod>2020-03-02T14:36:00Z</lastmod>
  </url>
  <url>
-  <loc>https://qianbi_tou.gitee.io/my_blog/posts/exceltotxt/</loc>
+  <loc>https://xinkqd.github.io/myblog/posts/exceltotxt/</loc>
   <lastmod>2020-02-25T09:20:00Z</lastmod>
  </url>
 </urlset>
