@@ -20,7 +20,7 @@ BLOG_AUTHOR = "MrX"  # (translatable)
 BLOG_TITLE = "攻城狮小站"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
-SITE_URL = "https://qianbi_tou.gitee.io/my_blog/"
+SITE_URL = "https://xinkqd.github.io/myblog/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "https://example.com/"
