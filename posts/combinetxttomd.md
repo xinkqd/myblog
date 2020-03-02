@@ -27,6 +27,8 @@ Machine Design是一门专业性很强的课程，主要讲述了诸如静力破
 
 * 通过迭代依次打开字幕稿文本文档并读取文件内的内容
 
+  
+
   ```python
   # 迭代读取字幕稿文本文档中的内容
   for n in range(rangew):
@@ -34,6 +36,8 @@ Machine Design是一门专业性很强的课程，主要讲述了诸如静力破
   	ftxt = f.read()
   	text.append(ftxt)
   ```
+
+  
 
   其中：
 
@@ -47,6 +51,8 @@ Machine Design是一门专业性很强的课程，主要讲述了诸如静力破
 
   经过测试，Python可以直接打开并保存`Markdown`的文件：
 
+  
+
   ```python
   # 写入Markdown文档
   fmd = open('subtitle.md','w')
@@ -54,6 +60,8 @@ Machine Design是一门专业性很强的课程，主要讲述了诸如静力破
   	fmd.write(text[t])
   fmd.close()
   ```
+
+  
 
   这里首先应用到了Python的`open()`函数：`open()`函数可以用于打开一个文件，创建一个`file`对象。
 
@@ -103,6 +111,8 @@ Machine Design是一门专业性很强的课程，主要讲述了诸如静力破
 
 修改后的代码：
 
+
+
 ```python
 # 1 迭代读取字幕稿文本文档中的内容
 for n in range(rangew):
@@ -129,6 +139,8 @@ for t in range(len(text)):
 	fmd.write('\n')
 fmd.close()
 ```
+
+
 
 代码修改后的运行效果：
 
