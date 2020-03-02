@@ -36,7 +36,7 @@
 &emsp;&emsp;因为最终我只需要每个单元格中的值即可，在`OpenPyxl`中，我们可以通过`cell.value`属性，通过迭代单元格获取每个单元格的值：
 
 ```python
-for row in rows:
+ for row in rows:
     for cell in row:
         cellvalue = cell.value
 ```
@@ -55,10 +55,10 @@ for row in rows:
      在实现这部分功能时，考虑到后续会使用到标题行故将标题行单元格的值放到了`TotalTitleName`这个`List`中：
 
 ```python
-     TotalTitleName = []
-     for row in ws['A1':'I1']:
-         for cell in row:
-             TotalTitleName.append(cell.value)
+ TotalTitleName = []
+ for row in ws['A1':'I1']:
+     for cell in row:
+          TotalTitleName.append(cell.value)
 ```
 
    * 遍历表格数据
@@ -68,28 +68,28 @@ for row in rows:
      &emsp;&emsp;遍历过程中首先将各行数据写入`List_CellValue`中，遍历完一行再将其值写入`List_AllCell_Value`中，其中`List_AllCell_Value`是一个包含所有行数据的二维`List`：
 
 ```python
-     # 遍历单元格
-     List_AllCell_Value = []
-     for row in ws['A2':'I9']:
-         if row[0].value != None: 
-             List_CellValue = []
-             for cell in row:
-                 List_CellValue.append(cell.value)
-             List_AllCell_Value.append(List_CellValue) 
+ # 遍历单元格
+ List_AllCell_Value = []
+ for row in ws['A2':'I9']:
+  	if row[0].value != None: 
+ 		List_CellValue = []
+ 		for cell in row:
+			List_CellValue.append(cell.value)
+	List_AllCell_Value.append(List_CellValue) 
 ```
 
    * 将标题与每行对应数据关联
 
      将获取到的标题和单元格内容进行关联，并将关联后的文件写入新的`List`中：
 ```python
-     Info_Row_Value = []
-     for x in range(0:8):
-         Info_All_Row_Value = [] 
-         for y in range(0:9):    
-             NewCatlog = Titlename[y] +'：'+ Textvalue[x][y]
-             Info_All_Row_Value.append(NewCatlog)
-             Info_All_Row_Value[y] =Info_All_Row_Value[y] + '<p>' 
-         Info_Row_Value.append(Info_All_Row_Value)
+ Info_Row_Value = []
+ for x in range(0:8):
+ 	Info_All_Row_Value = [] 
+ 	for y in range(0:9):    
+ 		NewCatlog = Titlename[y] +'：'+ Textvalue[x][y]
+        Info_All_Row_Value.append(NewCatlog)
+        Info_All_Row_Value[y] =Info_All_Row_Value[y] + '<p>' 
+     Info_Row_Value.append(Info_All_Row_Value)
 ```
 
 
